@@ -59,7 +59,7 @@
 					INNER JOIN countries c 
 							  ON gn.country_id = c.id
 							  AND c.country_name = 'Mellieha'
-				ORDER BY gn.surname
+				ORDER BY gn.surname"
 							
 			$result = mysqli_query($connection, $sql_command);
 		?>
