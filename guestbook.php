@@ -54,9 +54,13 @@
 	
 			//retrieve guestbook entries from database
 			require_once("connect.php");
-			$sql_command = "SELECT guestbook_entries.id AS guestbook_entries_id, guestbook_entries.name AS name, guestbook_entries.surname, countries.name AS country, guestbook_entries.message, guestbook_entries.time, guestbook_entries.email
-				FROM guestbook_entries, countries
-				WHERE guestbook_entries.country_id = countries.id;";
+			$sql_command = "SELECT gn.name AS Name, gn.surname AS Surname, c.country_name AS Country, gn.message AS message, gn.time AS time, gn.email as email
+				FROM guestbook_entries gn
+					INNER JOIN countries c 
+							  ON gn.country_id = c.id
+							  AND c.country_name = 'Mellieha'
+				ORDER BY gn.surname
+							
 			$result = mysqli_query($connection, $sql_command);
 		?>
 		
