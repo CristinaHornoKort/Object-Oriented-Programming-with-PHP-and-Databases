@@ -1,27 +1,32 @@
 <?php
 
 	class Textarea extends Control{
-		public $rows;
-		public $cols;
-		public $placeholder;
+		
+		private $rows;
+        private $cols;
+        private $placeholder;
 
 		public function __construct($_label, $_name, $_rows, $_cols, $_placeholder, $_cssClass){
 			
-			$this->label = $_label; //Control class
-			$this->name = $_name; //Control class
-			$this->rows = $_rows;
-			$this->cols = $_cols;
-			$this->placeholder = $_placeholder;
-			$this->cssClass = $_cssClass; //Control class
+			$this->setLabel($label);
+            $this->setName($name);
+            $this->rows = $rows;
+            $this->cols = $cols;
+            $this->placeholder = $placeholder;
+            $this->setCssClass($cssClass);
 			
 		}
 
 		public function draw(){
 			
-			$htmlContent = '<label for="'.$this->name.'">'.$this->label.'</label>';
-			$htmlContent .= '</br><textarea rows="'.$this->rows.'" cols="'.$this->cols.'" name="'.$this->name.'" id="'.$this->name.'" placeholder="'.$this->placeholder.'" class="'.$this->cssClass.'"  ></textarea>';
-			
-			echo $htmlContent;
+			$htmlContent = '<label for = "'.$this->getName().'">'.$this->getLabel().'</label>';
+            $htmlContent .= '<textarea id="'.$this->getName().'" name="'.$this->getName().'" rows="'.$this->rows.'" cols="'.$this->cols   .'"  class="'.$this->getCssClass().'"  ></textarea>';
+
+            echo $htmlContent;
+
+            ?>
+                </br></br>
+            <?
 			
 		}
 

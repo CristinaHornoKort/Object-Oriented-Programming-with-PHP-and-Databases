@@ -1,26 +1,28 @@
 <?php
 
 	class Select extends Control{
-		public $options;
+		
+		private $options;
 
 		public function __construct($_label, $_name, $_options, $_cssClass){
 			
-			$this->label = $_label; //Control class
-			$this->name = $_name; //Control class
-			$this->options = $_options; //$_options has to be an array
-			$this->cssClass = $_cssClass; //Control class
+			$this->setLabel($label);
+            $this->setName($name);
+            $this->options = $_options;
+            $this->setCssClass($cssClass);
 						
 		}
 
 		public function draw(){
 			
-			$htmlContent = '<label for="'.$this->name.'">'.$this->label.'</label>';
-			$htmlContent .= '<select name="'.$this->name.'" id="'.$this->name.'">';
-			foreach ($this->options as $value){
-				$htmlContent .= '<option value="'.$value["id"].'">'.$value["name"].'</option>';
-			}
-			$htmlContent .= '</select>';
-			echo $htmlContent;
+			$htmlContent = '<label for="'.$this->getName().'">'.$this->getLabel().'</label>';
+            $htmlContent .= '<select name="'.$this->getName().'" id="'.$this->getName().'">';
+            foreach ($this->options as $value){
+                $htmlContent .= '<option value="'.$value["id"].'">'.$value["name"].'</option>';
+            }
+            $htmlContent .= '</select></br></br>';
+
+            echo $htmlContent;
 			
 		}
 	}
